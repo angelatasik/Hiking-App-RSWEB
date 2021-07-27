@@ -1,0 +1,50 @@
+﻿@model HikingApp_RSWEB.Models.Vodich
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@{
+    ViewData["Title"] = "Details";
+    var photoPath = "~/images/" + (Model.ProfilePicture ?? "nopicture.jpg");
+}
+
+<h1>Податоци за водичот</h1>
+<div>
+    <hr />
+    <img src="@photoPath"
+         height="300" width="300"
+         class="img-thumbnail shadow-lg"
+         asp-append-version="true" />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pozicija)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pozicija)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vozrast)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vozrast)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Промени</a> |
+    <a asp-action="Index">Врати назад</a>
+</div>

@@ -1,0 +1,30 @@
+﻿@model HikingApp_RSWEB.Models.Rezervacii
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Дали сте сигурни дека сакате да ја избришете резервацијата?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+           Тура
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tura.Mesto)
+        </dd class>
+        <dt class = "col-sm-2">
+            Планинар
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Planinar.FullName)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Избриши" class="btn btn-danger" /> |
+        <a asp-action="Index">Bрати назад</a>
+    </form>
+</div>

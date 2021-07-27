@@ -1,0 +1,38 @@
+﻿@model HikingApp_RSWEB.Models.Rezervacii
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Промени ги податоците</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="TuraId" class="control-label"></label>
+                <select asp-for="TuraId" class="form-control" asp-items="ViewBag.TuraId"></select>
+                <span asp-validation-for="TuraId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlaninarId" class="control-label"></label>
+                <select asp-for="PlaninarId" class="form-control" asp-items="ViewBag.PlaninarId"></select>
+                <span asp-validation-for="PlaninarId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зачувај" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Врати назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,71 @@
+﻿@model HikingApp_RSWEB.Models.Tura
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Податоци за турата</h1>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mesto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mesto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumPocetok)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatumPocetok)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumKraj)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatumKraj)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tezina)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tezina)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vremetraenje)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vremetraenje)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstVodich)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstVodich.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SecoundVodich)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SecoundVodich.FullName)
+        </dd>
+
+        <dt class="col-sm-2">
+            Планинари
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var planinar in Model.Planinari)
+            {
+                <a asp-controller="Planinars" asp-action="Details" asp-route-id="@planinar.PlaninarId">
+                    @planinar.Planinar.FullName
+                </a> <br />}
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Промени</a> |
+    <a asp-action="Index">Врати назад</a>
+</div>

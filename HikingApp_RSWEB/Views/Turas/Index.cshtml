@@ -1,0 +1,110 @@
+﻿@model HikingApp_RSWEB.ViewModel.FiltrirajTuri
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body style="background-image: url('images/poz4.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;">
+
+    <h1>Планинарски тури</h1>
+
+    <p>
+        <a asp-action="Create">Додади нова тура</a>
+    </p>
+
+    <p>
+        <a>Филтрирај по:</a>
+    </p>
+
+    <form asp-controller="Turas" asp-action="Index" method="get">
+        <p>
+            ТежинаНаТура:
+            <select asp-for="Tezina" asp-items="Model.Tezini">
+                <option value="">Сите</option>
+            </select>
+
+            <input type="submit" value="Филтрирај" />
+        </p>
+    </form>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Turi[0].Mesto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Turi[0].DatumPocetok)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Turi[0].DatumKraj)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Turi[0].Tezina)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Turi[0].Vremetraenje)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Turi[0].FirstVodich)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Turi[0].SecoundVodich)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Turi)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mesto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatumPocetok)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatumKraj)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tezina)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vremetraenje)
+                    </td>
+
+                    <td>
+                        @if (item.FirstVodichId != null)
+                        {
+                            <a asp-controller="Vodiches" asp-action="Details" asp-route-id="@item.FirstVodichId"> @Html.DisplayFor(modelItem => item.FirstVodich.FullName)</a>}
+                    </td>
+
+                    <td>
+                        @if (item.SecoundVodichId != null)
+                        {
+                            <a asp-controller="Vodiches" asp-action="Details" asp-route-id="@item.SecoundVodichId"> @Html.DisplayFor(modelItem => item.SecoundVodich.FullName)</a>}
+                    </td>
+                    <td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Промени</a>
+
+
+                            <a asp-action="Delete" asp-route-id="@item.Id">Избриши</a>
+                        }
+                        @if (User.Identity.IsAuthenticated && (User.IsInRole("Vodich") || User.IsInRole("Planinar") || (User.IsInRole("Admin"))))
+                        {
+                            <a asp-action="Details" asp-route-id="@item.Id">Детали</a>
+                        }
+
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </body>

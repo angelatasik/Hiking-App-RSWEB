@@ -1,0 +1,75 @@
+﻿@model HikingApp_RSWEB.ViewModel.EditTuraViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Промени ги податоците</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Tura.Id" />
+            <div class="form-group">
+                <label asp-for="Tura.Mesto" class="control-label"></label>
+                <input asp-for="Tura.Mesto" class="form-control" />
+                <span asp-validation-for="Tura.Mesto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tura.DatumPocetok" class="control-label"></label>
+                <input asp-for="Tura.DatumPocetok" class="form-control" />
+                <span asp-validation-for="Tura.DatumPocetok" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tura.DatumKraj" class="control-label"></label>
+                <input asp-for="Tura.DatumKraj" class="form-control" />
+                <span asp-validation-for="Tura.DatumKraj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tura.Tezina" class="control-label"></label>
+                <input asp-for="Tura.Tezina" class="form-control" />
+                <span asp-validation-for="Tura.Tezina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tura.Vremetraenje" class="control-label"></label>
+                <input asp-for="Tura.Vremetraenje" class="form-control" />
+                <span asp-validation-for="Tura.Vremetraenje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tura.FirstVodichId" class="control-label"></label>
+                <select asp-for="Tura.FirstVodichId" class="form-control" asp-items="ViewBag.FirstVodichId"></select>
+                <span asp-validation-for="Tura.FirstVodichId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tura.SecoundVodichId" class="control-label"></label>
+                <select asp-for="Tura.SecoundVodichId" class="form-control" asp-items="ViewBag.SecoundVodichId"></select>
+                <span asp-validation-for="Tura.SecoundVodichId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Планинари</label>
+                <select asp-for="SelectedPlaninari" class="form-control js-example-basic-multiple"
+                        asp-items="Model.ListaPlaninari"> </select>
+                <span asp-validation-for="SelectedPlaninari" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Зачувај" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Врати назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    
+}

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HikingApp_RSWEB.Models.Rezervacii>
+
+
+@{ ViewData["Title"] = "PlaninarViewModel"; }
+
+
+<h1>Резервирани тури</h1>
+@{ var data = ViewBag.Message; }
+<h6> @data.FullName  </h6>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tura.Mesto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tura.DatumPocetok)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tura.DatumKraj)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tura.Tezina)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tura.Vremetraenje)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tura.Mesto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tura.DatumPocetok)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tura.DatumKraj)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tura.Tezina)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tura.Vremetraenje)
+    </td>
+
+
+</tr>
+}
+        </tbody>
+    </table>

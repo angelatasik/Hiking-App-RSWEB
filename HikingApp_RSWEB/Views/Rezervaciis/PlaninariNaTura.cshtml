@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HikingApp_RSWEB.Models.Rezervacii>
+<h1>Планинари кои резервирале за турата:</h1>
+@{ var data = ViewBag.Message; }
+<h1> @data.Mesto </h1>
+<table class="table">
+    <thead>
+        <tr>
+        
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @if (item.Planinar.ProfilePicture != null)
+                {
+                    <img src="~/images/@item.Planinar.ProfilePicture"
+                         class="rounded-circle"
+                         height="100" width="100"
+                         asp-append-version="true" /> }
+                else
+                {
+                    <img src="~/images/nopicture.jpg"
+                         class="rounded-circle"
+                         height="100" width="100"
+                         asp-append-version="true" />}
+            </td>
+            <td>
+                @if (item.Planinar.FullName != null)
+                {
+                <a asp-controller="Planinars" asp-action="Details" asp-route-id="@item.PlaninarId">
+                    @Html.DisplayFor(modelItem => item.Planinar.FullName)
+                </a>}
+            </td>
+           
+
+        </tr>}
+    </tbody>
+</table>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<HikingApp_RSWEB.Models.Tura>
+
+@{ ViewData["Title"] = "TuriPoVodich"; }
+
+
+    <h1>Тури на</h1>
+    @{ var data = ViewBag.Message; }
+    <h6>
+        @data.FullName
+    </h6>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mesto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatumPocetok)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatumKraj)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tezina)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vremetraenje)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstVodich)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SecoundVodich)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Mesto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DatumPocetok)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DatumKraj)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tezina)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vremetraenje)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstVodich.FullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SecoundVodich.FullName)
+    </td>
+    <td>
+        <a asp-controller="Rezervaciis" asp-action="PlaninariNaTura" asp-route-id="@item.Id">Планинари</a>
+    </td>
+</tr>}
+        </tbody>
+    </table>

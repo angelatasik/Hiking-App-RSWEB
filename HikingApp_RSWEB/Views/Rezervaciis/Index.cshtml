@@ -1,0 +1,50 @@
+﻿@model HikingApp_RSWEB.ViewModel.RezervaciiPoTura
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Резервации</h1>
+
+<p>
+    <a asp-controller="Rezervaciis" asp-action="NewRezz">Креирај нова резервација</a>
+</p>
+
+<form asp-controller="Rezervaciis" asp-action="Index" method="get">
+    <p>
+        Тура:
+        <select asp-for="Tura" asp-items="Model.TuraMesto">
+            <option value="">Сите</option>
+        </select>
+
+        <input type="submit" value="Филтрирај" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervacii[0].Tura.Mesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervacii[0].Planinar.FullName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Rezervacii) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tura.Mesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Planinar.FullName)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id">Избриши</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

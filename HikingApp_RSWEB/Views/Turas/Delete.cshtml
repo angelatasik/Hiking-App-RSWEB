@@ -1,0 +1,60 @@
+﻿@model HikingApp_RSWEB.Models.Tura
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>Дали сте сигурни дека сакате да ја избришете турата?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mesto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mesto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumPocetok)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatumPocetok)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumKraj)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatumKraj)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tezina)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tezina)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Vremetraenje)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Vremetraenje)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstVodich)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstVodich.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SecoundVodich)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SecoundVodich.FullName)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Избриши" class="btn btn-danger" /> |
+        <a asp-action="Index">Врати назад</a>
+    </form>
+</div>
